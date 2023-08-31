@@ -1,0 +1,21 @@
+name: Daily Script Run
+
+on:
+  schedule:
+    - cron: '10 16 * * *'  # 每天的UTC 16:10
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Run Python script
+      run: python jichang.py  # 替换为您的脚本文件名
